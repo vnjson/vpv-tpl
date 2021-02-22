@@ -2,7 +2,7 @@ const { resolve, join } = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin'); 
 const ExtraWatch = require('extra-watch-webpack-plugin')
 const WebpackConcatPlugin = require('webpack-concat-files-plugin');
-const stj = require('./scenes-to-json.js')
+const stj = require('scenes-to-json-webpack-plugin')
 module.exports = {
   watch: false,
   mode: 'development', //production
