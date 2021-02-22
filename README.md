@@ -3,27 +3,27 @@
 
 > Template for creating a visual novel 
 
-## Demo
-[`Visual novel`](https://vnjson.github.io/vnjson.js/demo/visual-novel/)
+# Demo
+[__`Visual novel`__](https://vnjson.github.io/vnjson.js/demo/visual-novel/)
 
-## Download
-[`vpv-tpl.zip`](https://github.com/vnjson/vpv-tpl/archive/main.zip)
+# Download
+[__`vpv-tpl.zip`__](https://github.com/vnjson/vpv-tpl/archive/main.zip)
 
 __`or`__
 
-```bash 
+```sh 
 git clone git@github.com:vnjson/vpv-tpl.git
 ```
-## Install
+# Install
 For work you need [nodejs](https://nodejs.org/en/)
 Open the template folder and run the next command in the your [`terminal`](https://youtu.be/MBBWVgE0ewk)
 
-```bash
+```sh 
 npm install
 npm run start
 ```
 
-## Usage
+# Usage
 *Open in browser* [`http://localhost:9000/`](http://localhost:9000/)
 
 Open directory __`src/scenes`__ in your project and edit yaml scenes

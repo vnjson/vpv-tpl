@@ -1,13 +1,11 @@
 {
-  "name": "pixi",
+  "name": "vpv-tpl",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "webpack.config.js",
+
   "scripts": {
-    "styles": "sass --watch ./_src/styles:./_dist/css",
+    "styles": "sass --watch ./src/styles:./dist/css",
     "start": "webpack serve"
   },
   "keywords": [],
