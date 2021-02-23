@@ -4,7 +4,7 @@
 > Template for creating a visual novel 
 
 # Demo
-[__`Visual novel`__](https://vnjson.github.io/vnjson.js/demo/visual-novel/)
+[__`This dist`__](https://vnjson.github.io/vpv-tpl/dist/)
 
 # Download
 [__`vpv-tpl.zip`__](https://github.com/vnjson/vpv-tpl/archive/main.zip)
