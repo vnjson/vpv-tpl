@@ -18,7 +18,8 @@ git clone git@github.com:vnjson/vpv-tpl.git
 For work you need [nodejs](https://nodejs.org/en/)
 Open the template folder and run the next command in the your [`terminal`](https://youtu.be/MBBWVgE0ewk)
 
-```sh 
+```sh
+npm install gulp -g
 npm install
 npm run start
 ```
