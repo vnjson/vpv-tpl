@@ -221,6 +221,12 @@ _screens.scene.addChild(sprite);
 }
 function assetsLoader(scene){
 
+if(scene.assets.length === 0){
+vnjs.emit('preload', scene);	
+	vnjs.emit('load', 'assets: []')
+vnjs.emit('postload', scene);
+}
+else{
 const loader = new PIXI.Loader();
 
 loader.onStart.add(() => {
@@ -244,7 +250,7 @@ loader.onComplete.add(() => {
 	vnjs.emit('postload', scene);
 });
 
-
+}
 };
 function vnjsonShow(param){
 	let { x, y, name } = param;

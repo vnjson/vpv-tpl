@@ -1,5 +1,11 @@
 function assetsLoader(scene){
 
+if(scene.assets.length === 0){
+vnjs.emit('preload', scene);	
+	vnjs.emit('load', 'assets: []')
+vnjs.emit('postload', scene);
+}
+else{
 const loader = new PIXI.Loader();
 
 loader.onStart.add(() => {
@@ -23,5 +29,5 @@ loader.onComplete.add(() => {
 	vnjs.emit('postload', scene);
 });
 
-
+}
 };

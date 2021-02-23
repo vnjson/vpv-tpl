@@ -1,4 +1,18 @@
 {
 	"entry": "chapter1.start",
-	"mode": "once"
+	"mode": "once",
+	"scenes": [
+		{
+			"name": "chapter1",
+			"url": "./scenes/chapter1.json"
+		},
+		{
+			"name": "chapter2",
+			"url": "./scenes/chapter2.json"
+		},
+		{
+			"name": "chapter3",
+			"url": "./scenes/chapter3.json"
+		}
+	]
 }

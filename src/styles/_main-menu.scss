@@ -2,7 +2,7 @@
 main menu
  */
 .screen__main-menu{
-	background-image: url(/assets/main.menu.jpg);
+	background-image: url(../assets/main.menu.jpg);
 	color: $screenColor;
 }
 .main-menu__wrapper{
@@ -16,7 +16,6 @@ main menu
 	top: 100px;
 	right: 10px;
 	font-size: 1.5em;
-
 	font-weight: bold;
 }
 

@@ -27,10 +27,8 @@ const vnjs = new Vnjson();
 
 
 vnjs.current = {
-	screen: {}, //графика на экране
-	pathName: 'scene.label',
-	index: 0,
-	audio: ''
+	screen: {} //графика на экране
+
 }
 vnjs.conf = {
 	typespeed: 30,
@@ -73,7 +71,6 @@ vnjs.on('screen', function (screenName){
 /**
  * Config loader
  */
-var sceneLoad;
 fetch('./vn.json')
   		.then( r => r.json() )
   		.then( (config)=>{
@@ -82,31 +79,26 @@ const { scenes, entry, mode } = config;
 /**
  * Scenes load order 
  * [once] - Assets&&scenes dinamic load
- * [all] - Load all game resource
+ * [all] - Load all game resourse
  */
 vnjs.sceneLoader.mode = mode;
 vnjs.sceneLoader.entry = entry;
 /**
  * Scene loader
  */
-sceneLoad = function (){
 vnjs.getScenes(	scenes, function (scene, next){
 
 fetch(scene.url)
   		.then( r => r.json() )
   		.then( (body)=>{
-  				console.log(body)
   				vnjs.setScene(scene.name, body);
   				console.log(`<${scene.name}>`);
   				console.log(body)
-  				setTimeout(()=>{
-  					next();		
-  				},0)		
+  				next();				
   		});
 
 });
-}
-sceneLoad()
+
 });//vn.json
 
 vnjs.on('preload', function (scene){

@@ -8,7 +8,7 @@
  <p>Mode</p>
 <p>
 <input type="radio" id="once" value="once" v-model="mode">
-<label for="once">Load resources as you progress</label> 
+<label for="one">Load resources as you progress</label> 
 <br>
 <input type="radio" id="all" value="all" v-model="mode">
 <label for="all">Load all resources before starting the game</label>  
@@ -70,7 +70,6 @@ export default {
     },
     mode (){
       vnjs.sceneLoader.mode = this.$data.mode;
-      sceneLoad();
     }
   }
 }
