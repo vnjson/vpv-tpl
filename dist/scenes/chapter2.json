@@ -11,10 +11,6 @@
     {
       "name": "stiralki",
       "url": "./scenes/assets/stiralki.jpg"
-    },
-    {
-      "name": "train",
-      "url": "./scenes/assets/train.jpg"
     }
   ],
   "characters": [

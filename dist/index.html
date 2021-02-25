@@ -5,13 +5,18 @@
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 <!-------------/lib/----------------->
-	<script src="./lib/pixi.min.js"></script>
-	<script src="./lib/pixi-legacy.min.js"></script>
-	<script src="./lib/pixi-sound.js"></script>
-	<script src="./lib/vue.js"></script>
-	<script src="./lib/vnjson.js"></script>
-<!-------------/plugins/-------------->
+	<!-- 
+		Pixi не входит в bundle, 
+		потому что её перекрывает Pixi.legacy
+	-->
+
+	<script src="./app/pixi.min.js"></script>
+	<script src="./app/lib.js"></script>
+	<script src="./app/pixi-filters.js"></script>
 	<script src="./app/plugins.js"></script>
+	<script src="./app/vnjson.js"></script>
+<!-------------/plugins/-------------->
+
 
 <!-------------styles------------------->
 	<link rel="stylesheet" type="text/css" href="./css/main.css">

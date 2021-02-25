@@ -1,7 +1,9 @@
 
 
 
-function vnjsonAudio (data){
+function audioVnjson (data){
+
+this.on('audio', data=>{
 
 PIXI.sound.stopAll();
 
@@ -16,14 +18,14 @@ if(typeof data==='string'){
 			//PIXI.sound.toggleMuteAll();
 		}
 		else{
-			_assets[name].volume = vnjs.conf.volume/1000;
+			_assets[name].volume = vnjs.current.conf.volume/1000;
 			_assets[data].play();
 			prevAudio = data;
 		}
 }
 else{
 let { name, volume, action, loop, speed } = data;
-let vol = Number(volume)||vnjs.conf.volume;
+let vol = Number(volume)||vnjs.current.conf.volume;
 _assets[name].volume =  vol/1000;
 
 
@@ -45,6 +47,9 @@ else{
 	prevAudio = name;
 }
 
-}
+};
+
+
+})
 }
 

@@ -1,7 +1,19 @@
-function vnjsonScene (name){
+function sceneVnjson(){
 
-	let sprite = _assets[name];
 
+function drawScene (name){
+	this.emit('clear', 'scene');
+	/*
+var sprite = null;
+if(this.current.layer.scene){
+	sprite = _assets[this.current.layer.scene];
+}else{
+
+	this.current.layer.scene = name;
+	
+}
+		
+*/
 
 	//snake
 	//"left":"+=8px"
@@ -11,8 +23,12 @@ function vnjsonScene (name){
 //blink
 //"top":"+=5px"
 //"top":"-=5px"
-
+sprite = _assets[name];
 _screens.scene.addChild(sprite);	
 
 
+
 }
+	this.on('scene', drawScene)
+}
+

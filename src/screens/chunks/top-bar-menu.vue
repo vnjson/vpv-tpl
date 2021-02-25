@@ -1,22 +1,17 @@
 <template>
-<span>points 0</span>
+<span v-model.volume="points">Points: {{points}}</span>
 
 </template>
-
 
 <script>
 
 export default {
-  name: 'top-bar-menu'
+  name: 'top-bar-menu',
 
- /* methods: {
-    click (){
-     // vue.$data.screen = "main-menu"
-    },
-  computed: {
-  	points (){
-  		return vue.$data.points;
-  	}
-  }*/
+	data (){
+		return {
+			points: vnjs.current.data.points
+		}
+	}
 }
 </script>

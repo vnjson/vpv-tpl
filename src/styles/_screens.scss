@@ -1,14 +1,27 @@
 
 
-#screens{}
+%bg-gradient {
+	background: -webkit-linear-gradient(90deg, rgb(0, 77, 167), rgb(0, 0, 80) 100%);
+	background: -moz-linear-gradient(90deg, rgb(0, 77, 167), rgb(0, 0, 80) 100%);
+	background: linear-gradient(90deg, rgb(0, 77, 167), rgb(0, 0, 80) 100%);	
+	color: white;
+
+}
+
+#screens{
+
+}
+#pixi{
+	border-radius: 5px; 
+}
 .screen{
+	border-radius: 5px; 
 	position: absolute;
 	width: 100%;
   height: 100%;
+	border: 2px solid white;
 }
-.screen__stream {
 
-};
 .screen__game-menu {
 	background-color: rgba(0,0,0,0.5);
 };
@@ -16,20 +29,26 @@
 
 .screen__settings {
 	padding: 10px;
-	background-color: #A7C2D5;
-	color: $screenColor;
-}
+	@extend %bg-gradient;
 
+}
+.settings__range{
+	display: inline-block;
+	margin: 10px;
+}
+.typespeed__range{
+	display: block;
+}
 .screen__about {
 	padding: 10px;
-	background-color: #A7C2D5;
-	color: $screenColor;
+	@extend %bg-gradient;
+
 }
 
 .screen__memory-card {
 	padding: 10px;
-	background-color: #A7C2D5;
-	color: $screenColor;
+	@extend %bg-gradient;
+
 }
 
 .screen__preload{
@@ -48,24 +67,6 @@
     margin: auto;
 	font-size: 1.5em;
 	font-weight: bold;
-}
-
-.top-menu{
-	width: 100%;
-	margin: 0;
-	height: 35px;
-	background: rgba(0, 0, 0, 0.9);
-	color: grey;
-	font-weight: bold;
-	padding: 1%;
-}
-.return-to-main-menu{
-
-}
-
-.top-menu.return-to-main-menu :hover{
-	color: white;
-	cursor: pointer;
 }
 
 

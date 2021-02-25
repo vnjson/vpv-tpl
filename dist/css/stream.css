@@ -1,0 +1,65 @@
+.dialog-box {
+  width: 797px;
+  height: 150px;
+  padding: 5px;
+  border: none;
+  background-image: url(../assets/dialog-box.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 327px; }
+
+.dialog-box:hover {
+  cursor: pointer; }
+
+.dialog-box__name {
+  color: white;
+  height: 20px;
+  width: 30%;
+  color: grey;
+  font-size: 1.4em;
+  padding-left: 5px;
+  position: relative;
+  top: -7px; }
+
+.dialog-box__reply {
+  color: grey;
+  font-size: 1.3em;
+  position: relative;
+  top: 15px;
+  padding: 5px; }
+
+.char-letter {
+  opacity: 0;
+  transition: 0.3s; }
+
+.dialog-box__signal {
+  opacity: 0;
+  width: 6px;
+  height: 6px;
+  display: none;
+  background-color: grey; }
+
+.dialog-box__signal--ctc {
+  animation: signal 1.5s ease-in-out infinite; }
+
+@keyframes signal {
+  50% {
+    opacity: 1; }
+  90% {
+    opacity: 0; } }
+
+.top-menu {
+  width: 100%;
+  margin: 0;
+  height: 35px;
+  background: rgba(0, 0, 0, 0.9);
+  color: grey;
+  font-weight: bold;
+  padding: 1%; }
+
+.return-to-main-menu {
+  color: darkcyan; }
+
+.return-to-main-menu:hover {
+  color: cyan;
+  cursor: pointer; }

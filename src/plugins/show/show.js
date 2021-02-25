@@ -1,4 +1,7 @@
-function vnjsonShow(param){
+function showVnjson(){
+
+
+const show = param=>{
 	let { x, y, name } = param;
 	let sprite = _assets[param.name];
 			sprite.x = `${x}px`;
@@ -9,7 +12,9 @@ _screens.show.addChild(sprite);
 }
 
 
-function vnjsonLeft (name){
+
+
+const left = name=>{
 var ticker = PIXI.Ticker.shared;
 var sprite = null;
 function animation (delta){
@@ -18,17 +23,17 @@ function animation (delta){
 }
 
 if(name==='clear'){
-	sprite = _assets[vnjs.current.screen.left];
+	sprite = _assets[this.current.layer.show.left];
 	ticker.stop()
   sprite.alpha = 0;
 
 }
 else{
-			vnjs.current.screen.left = name;
+			this.current.layer.show.left = name;
 			sprite = _assets[name];
 			sprite.anchor.set(0.5);
 			sprite.alpha = 0;
-			sprite.x = 90;
+			sprite.x = 130;
 			sprite.y = app.screen.height / 2;
 			_screens.show.addChild(sprite);
 			ticker.add(animation);
@@ -36,7 +41,7 @@ else{
 }
 }
 
-function vnjsonRight (name){
+const right = name=>{
 
 var ticker = PIXI.Ticker.shared;
 var sprite = null;
@@ -46,17 +51,17 @@ function animation (delta){
 }
 
 if(name==='clear'){
-	sprite = _assets[vnjs.current.screen.right];
+	sprite = _assets[this.current.layer.show.right];
 	ticker.stop()
   sprite.alpha = 0;
 
 }
 else{
-			vnjs.current.screen.right = name;
+			this.current.layer.show.right = name;
 			sprite = _assets[name];
 			sprite.anchor.set(0.5);
 			sprite.alpha = 0;
-			sprite.x = app.screen.width-90;
+			sprite.x = app.screen.width-130;
 			sprite.y = app.screen.height / 2;
 			_screens.show.addChild(sprite);
 
@@ -65,7 +70,8 @@ else{
 	}		
 }
 
-function vnjsonCenter (name){
+
+const center = name=>{
 var ticker = PIXI.Ticker.shared;
 var sprite = null;
 function animation (delta){
@@ -74,13 +80,13 @@ function animation (delta){
 }
 
 if(name==='clear'){
-	sprite = _assets[vnjs.current.screen.center];
+	sprite = _assets[this.current.layer.show.center];
 	ticker.stop()
   sprite.alpha = 0;
 
 }
 else{
-			vnjs.current.screen.center = name;
+			this.current.layer.show.center = name;
 					sprite = _assets[name];
 					sprite.anchor.set(0.5);
 					sprite.alpha = 0;
@@ -92,4 +98,10 @@ else{
 			ticker.add(animation);
 			ticker.start()
 }
+};
+
+this.on('show', show);
+this.on('right', right);
+this.on('left', left);
+this.on('center', center );
 }

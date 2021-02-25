@@ -6,14 +6,23 @@
     volume: 30
     speed: 0.3
   scene: school
-  blur: school
+  #blur: school
 ########################
 - Никто не мог предвидеть этих событий
 - Но произашло, то что  произошло и случилось, то что случилось
 
 - nr: Привет! Давно не виделись. 
   center: Nora
-    
+  point: 5
+  dropShadow:
+    name: Nora
+    rotation: 45  #optional #The angle of the shadow in degrees.
+    distance: 15 #optional #Distance of shadow
+    color: 0x000000  #optional #Color of the shadow
+    alpha: 0.7 #optional #Alpha  of the shadow
+    shadowOnly: false
+
+
 - nr: Составишь мне компанию до прачечной?
 - menu:
     ?: Куда бы мне отправиться?

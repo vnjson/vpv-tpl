@@ -13,10 +13,12 @@
 <br>
 <p>
 	<h3>Credits</h3>
-	 background && chracters
+	 Chracters
 	<a href="https://noranekogames.itch.io">Noraneko Games</a>
 </p>
-<br><br>
+
+
+<br>
 <p>powered by <b><a href="https://vnjson.github.io">vnjson</a></b></p>
 <btn-return></btn-return>
 </div>

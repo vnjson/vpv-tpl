@@ -1,0 +1,44 @@
+
+- ansii: Nora
+
+- ansii:
+    name: Nora
+    size: 30 #default= 8 
+
+#####################
+
+- glitch: Nora
+
+
+
+#############################
+- oldFilm: Nora
+
+- oldFilm:
+    name: Nora
+    sepia: 0.3
+    noise: 0.3
+    noiseSize: 1.0
+    scratch: 0.5 #How often scratches appear
+    scratchDensity: 0.3
+    scratchWidth: 1.0
+    vignetting: 0.3
+    vignettingAlpha: 1.0
+    vignettingBlur: 0.3
+
+
+##################
+- dropShadow: Nora
+
+- dropShadow:
+    name: Nora
+    rotation: 45  #optional #The angle of the shadow in degrees.
+    distance: 5 #optional #Distance of shadow
+    color: 0x000000  #optional #Color of the shadow
+    alpha: 0.5 #optional #Alpha  of the shadow
+    shadowOnly: false #optional #Whether render shadow only
+    blur: 2 #optional #Sets the strength of the Blur properties simultaneously
+    quality: 3 #optional #The quality of the Blur filter.
+    kernels: null  # Array.<number>    #optional #The kernels of the Blur filter.
+    pixelSize: 1 # number | Array.<number> | PIXI.Point  1 #optional #the pixelSize of the Blur filter.
+    resolution: PIXI.settings.FILTER_RESOLUTION #  number   #optional 3The resolution of the Blur filter.

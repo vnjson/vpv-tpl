@@ -1,9 +1,11 @@
 
-var scoresData = 0;
-function point(data){
+function pointVjson(){
 
-	scoresData = scoresData+data;
 
-	scoresEl.innerHTML = `scores: ${scoresData}`;
-	
-};
+this.on('point', function (point){
+		this.current.data.points = this.current.data.points+point;
+//scoresEl.innerHTML = `scores: ${scoresData}`;
+
+});
+
+}

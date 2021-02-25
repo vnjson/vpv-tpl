@@ -5,6 +5,7 @@
   <h3>Settings</h3>
 <br>
 <br>
+<!--
  <p>Mode</p>
 <p>
 <input type="radio" id="once" value="once" v-model="mode">
@@ -14,24 +15,21 @@
 <label for="all">Load all resources before starting the game</label>  
 
 </p>  
-<br>
-<p>Text speed</p>
-<input  v-model.typespeed="typespeed" type="range" min="0" max="100" value="30" name="range" step="1"/>
-{{typespeed}}
-
+-->
 <br><br>
-<p>Volume</p>
-<p>
-<input v-model.volume="volume" type="range" min="0" max="500" value="100" name="range" step="1"/>
-{{volume}}
-</p>
-<br>
-<p>Zoom</p>
-<p>
-<input  v-model.scale="scale" type="range" min="50" max="400" value="100" name="range" step="1"/>
-{{ scale }}
-</p>
 
+<div class='settings__range'>
+  <p>Volume {{volume}}</p>
+  <input v-model.volume="volume" type="range" min="0" max="500" value="100" name="range" step="1"/>
+</div>
+<div class='settings__range'>
+  <p>Zoom {{ scale }}</p>
+  <input  v-model.scale="scale" type="range" min="50" max="400" value="100" name="range" step="1"/>
+</div>
+<div class='settings__range typespeed__range'>
+  <p>Text speed {{typespeed}}</p>
+  <input  v-model.typespeed="typespeed" type="range" min="0" max="100" value="30" name="range" step="1"/>
+</div>
  
 
 
@@ -47,9 +45,9 @@ export default {
   name: 'settings',
   data (){
     return {
-			scale: vnjs.conf.zoom,
-    	typespeed: vnjs.conf.typespeed,
-    	volume: vnjs.conf.volume,
+			scale: vnjs.current.conf.zoom,
+    	typespeed: vnjs.current.conf.typespeed,
+    	volume: vnjs.current.conf.volume,
       mode: vnjs.sceneLoader.mode
     }
   },
@@ -58,15 +56,15 @@ export default {
   },
   watch: {
     scale: function(newValue) {
-      vnjs.conf.zoom = (newValue*0.01).toFixed();
+      vnjs.current.conf.zoom = this.$data.scale;
       gameEl.style.transform = `scale(${newValue*0.01})`;
     },
     typespeed (){
-      vnjs.conf.typespeed = this.$data.typespeed;
+      vnjs.current.conf.typespeed = this.$data.typespeed;
       //vue.$data.typespeed = this.$data.typespeed;
     },
     volume (){
-      vnjs.conf.volume = this.$data.volume;
+      vnjs.current.conf.volume = this.$data.volume;
     },
     mode (){
       vnjs.sceneLoader.mode = this.$data.mode;

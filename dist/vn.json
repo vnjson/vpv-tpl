@@ -1,6 +1,7 @@
 {
 	"entry": "chapter1.start",
 	"mode": "once",
+	"debug": true,
 	"scenes": [
 		{
 			"name": "chapter1",

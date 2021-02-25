@@ -1,3 +1,5 @@
+function gameMenuVnjson(){
+
 
 
 function gameMenu(menu){
@@ -21,5 +23,9 @@ vnjs.$.menu_items.innerHTML = "";
 	}
 
 
+
+}
+
+this.on('menu', gameMenu)
 
 }

@@ -2,7 +2,7 @@
 @import 'screens';
 @import 'game-menu';
 @import 'main-menu';
-@import 'dialog-box';
+@import 'stream';
 
 * {
   box-sizing: border-box;
@@ -27,8 +27,8 @@ button{
 }
 
 .game{
-	width: 600px;
-	height: 400px;
+	width: 800px;
+	height: 480px;
   position: absolute;
   top: 0;
   right: 0;
@@ -37,18 +37,23 @@ button{
   margin: auto;
   transition: 2s;
   box-shadow:  3px 3px 3px rgba(0, 0, 0, 0.7);
+  
 }
 #pixi{
 	position: absolute;
 }
-
+/**
+ * Vue transition between screens
+ */
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
-
+/*
+ *
+ */
 input[type=range]  {
       width: 200px;
       -webkit-appearance: none;

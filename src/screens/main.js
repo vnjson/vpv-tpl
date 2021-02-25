@@ -18,10 +18,15 @@ import topBarMenu from './chunks/top-bar-menu.vue'
 Vue.component('btn-return', btnReturn);
 Vue.component('top-bar-menu', topBarMenu);
 
+var store = {
+			isStream: false
+}
+
 var vue = new Vue({
 	el: '#screens',
 	data (){
 		return {
+			store,
 			screen: 'main-menu'
 		}
 	},

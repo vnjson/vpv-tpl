@@ -1,8 +1,17 @@
-$screenColor: #607D8B;
+
 body{
 	background-image: url(../assets/background.png);
 	background-color: rgba(0, 30 , 30 , 0.7);
 	font-family: 'Comic Sans MS', 'sans-serif';
 
 }
+$pink-c: #d411f2;
 
+a{
+  color: cyan;
+  text-decoration: none;
+}
+
+a:hover{
+	color: $pink-c;
+}

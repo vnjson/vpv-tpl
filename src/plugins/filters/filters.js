@@ -1,12 +1,11 @@
-function vnjsonBlur (ctx){
+function filtersVnjson(){
 
-let sprite = _assets[ctx];
+function isObject(data){
+	return typeof(data) === 'object';
+}
 
-const blurFilter1 = new PIXI.filters.BlurFilter();
 
-
-sprite.filters = [blurFilter1];
-
+/*
 let count = 0;
 
 app.ticker.add(() => {
@@ -17,8 +16,97 @@ app.ticker.add(() => {
 
     sprite.blur = 20 * (blurAmount);
     //blurFilter2.blur = 20 * (blurAmount2);
+});*/
+
+/*
+
+this.on('blur', (data)=>{
+var sprite = null;
+
+	if(isObject(data)){
+		sprite = _assets[data.name];	
+	}else{
+		sprite = _assets[data];	
+	}
+	let filter = new PIXI.filters.BlurFilter();
+	sprite.filters = [filter];		
 });
-}
+*/
+
+
+/**
+ * ansii
+ */
+
+this.on('ansii', (data)=>{
+var sprite = null;
+
+	if(isObject(data)){
+		sprite = _assets[data.name];	
+	}else{
+		sprite = _assets[data];	
+	}
+	let filter = new PIXI.filters.AsciiFilter(data.size);
+	sprite.filters = [filter];		
+});
+
+/**
+ * glitch
+ */
+
+this.on('glitch', (data)=>{
+var sprite = null;
+
+	if(isObject(data)){
+		sprite = _assets[data.name];	
+	}else{
+		sprite = _assets[data];	
+	}
+	let filter = new PIXI.filters.GlitchFilter()
+	sprite.filters = [filter];		
+});
+
+this.on('dropShadow', (data)=>{
+var sprite = null;
+
+	if(isObject(data)){
+		sprite = _assets[data.name];	
+	}else{
+		sprite = _assets[data];	
+	}
+	let filter = new PIXI.filters.DropShadowFilter()
+	sprite.filters = [filter];		
+});
+
+
+
+
+this.on('oldFilm', (data)=>{
+var sprite = null;
+
+	if(isObject(data)){
+		sprite = _assets[data.name];	
+	}else{
+		sprite = _assets[data];	
+	}
+	let filter = new PIXI.filters.OldFilmFilter(data)
+	sprite.filters = [filter];		
+});
+
+
+
+
+
+
+
+
+
+
+
+}//filtersVnjson
+
+
+
 
 /*
 filter.contrast(0.5, true);
@@ -33,3 +121,39 @@ filter.browni(true);
 filter.kodachrome(true);
 filter.toBGR(true);
 */
+
+/**
+ 
+PIXI.filters.AdjustmentFilter
+PIXI.filters.AdvancedBloomFilter
+PIXI.filters.AsciiFilter
+PIXI.filters.BevelFilter
+PIXI.filters.BloomFilter
+PIXI.filters.BulgePinchFilter
+PIXI.filters.ColorMapFilter
+PIXI.filters.ColorOverlayFilter
+PIXI.filters.ColorReplaceFilter
+PIXI.filters.ConvolutionFilter
+PIXI.filters.CrossHatchFilter
+PIXI.filters.CRTFilter
+PIXI.filters.DotFilter
+
+PIXI.filters.EmbossFilter
+
+PIXI.filters.GlowFilter
+PIXI.filters.GodrayFilter
+PIXI.filters.KawaseBlurFilter
+PIXI.filters.MotionBlurFilter
+PIXI.filters.MultiColorReplaceFilter
+PIXI.filters.OldFilmFilter
+PIXI.filters.OutlineFilter
+PIXI.filters.PixelateFilter
+PIXI.filters.RadialBlurFilter
+PIXI.filters.ReflectionFilter
+PIXI.filters.RGBSplitFilter
+PIXI.filters.ShockwaveFilter
+PIXI.filters.SimpleLightmapFilter
+PIXI.filters.TiltShiftFilter
+PIXI.filters.TwistFilter
+PIXI.filters.ZoomBlurFilter 
+ */

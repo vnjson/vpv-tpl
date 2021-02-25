@@ -2,5 +2,6 @@
   print: Не самое мудрое решение
   clear: show
 - Попробуй ещё разок
-- = Game Over =
+- print: = Game Over =
+  point: -100
 - screen: main-menu

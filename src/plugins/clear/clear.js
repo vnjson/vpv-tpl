@@ -1,4 +1,7 @@
-function vnjsonClear(stage){
+function clearVnjson(){
+
+
+function clear(stage){
 if(stage){
 	let i = _screens[stage].children.length-1;
 	for (i; i>=0; i--){
@@ -11,4 +14,9 @@ else{
 			app.stage.removeChild(app.stage.children[i]);
 		};	
 	}
+}	
+
+
+this.on('clear', clear)
+
 }
