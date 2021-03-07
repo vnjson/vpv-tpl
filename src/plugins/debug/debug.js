@@ -11,23 +11,23 @@ this.on('exec', ctx=>{
 });
 
 this.on('preload', scene=>{
-	if(this.debug)
+	if(this.conf.debug)
 		console.log(`<${scene.name}>`);
 });
 
 this.on('load', (progress, url)=>{
-	if(this.debug)
+	if(this.conf.debug)
 			console.log(progress, url)
 })
 
 this.on('postload', scene=>{
-	if(this.debug)
+	if(this.conf.debug)
 			console.log(`</${scene.name}>`);
 
 });
 
 this.on('debug', function (){
-if(this.debug){
+if(this.conf.debug){
 
 	this.emit('stateLoad')
 

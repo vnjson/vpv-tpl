@@ -4,7 +4,7 @@ function assetsLoaderVnjson (){
 
 
 
-var assetsLoader = (scene)=>{
+var assetsLoader = scene=>{
 
 
 
@@ -19,6 +19,7 @@ const loader = new PIXI.Loader();
 loader.onStart.add(() => {
 	this.emit('preload', scene);
 });
+console.log(scene)
 loader.add(scene.assets).load();
 
 loader.onLoad.add((loader, res) => {
@@ -33,7 +34,8 @@ loader.onLoad.add((loader, res) => {
 
 		}); 
 
-loader.onComplete.add(() => {
+loader.onComplete.add(_=> {
+
 	this.emit('postload', scene);
 });
 
@@ -45,7 +47,7 @@ loader.onComplete.add(() => {
 this.on('sceneLoad', assetsLoader);	
 
 this.on('preload', function (scene){
-	if(vnjs.sceneLoader.mode==='once')
+	if(this.conf.mode==='once')
 				vue.$data.screen = 'preload';
 
 });

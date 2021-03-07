@@ -45,9 +45,9 @@ export default {
   name: 'settings',
   data (){
     return {
-			scale: vnjs.current.conf.zoom,
-    	typespeed: vnjs.current.conf.typespeed,
-    	volume: vnjs.current.conf.volume,
+			scale: vnjs.current.options.zoom,
+    	typespeed: vnjs.current.options.typespeed,
+    	volume: vnjs.current.options.volume,
       mode: vnjs.sceneLoader.mode
     }
   },
@@ -56,15 +56,15 @@ export default {
   },
   watch: {
     scale: function(newValue) {
-      vnjs.current.conf.zoom = this.$data.scale;
+      vnjs.current.options.zoom = this.$data.scale;
       gameEl.style.transform = `scale(${newValue*0.01})`;
     },
     typespeed (){
-      vnjs.current.conf.typespeed = this.$data.typespeed;
+      vnjs.current.options.typespeed = this.$data.typespeed;
       //vue.$data.typespeed = this.$data.typespeed;
     },
     volume (){
-      vnjs.current.conf.volume = this.$data.volume;
+      vnjs.current.options.volume = this.$data.volume;
     },
     mode (){
       vnjs.sceneLoader.mode = this.$data.mode;

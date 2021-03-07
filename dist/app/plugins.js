@@ -1,152 +1,3 @@
-function assetsLoaderVnjson (){
-
-
-
-
-
-var assetsLoader = (scene)=>{
-
-
-
-if(scene.assets.length === 0){
-this.emit('preload', scene);	
-	this.emit('load', '[  ]')
-this.emit('postload', scene);
-}
-else{
-const loader = new PIXI.Loader();
-
-loader.onStart.add(() => {
-	this.emit('preload', scene);
-});
-loader.add(scene.assets).load();
-
-loader.onLoad.add((loader, res) => {
-
-			if(res.extension==='mp3'){
-
-				_assets[res.name] = res.sound;
-			}else{
-				_assets[res.name] = new PIXI.Sprite(res.texture);
-			}
-			this.emit('load', `${Math.round(loader.progress)}%`, res.url);
-
-		}); 
-
-loader.onComplete.add(() => {
-	this.emit('postload', scene);
-});
-
-}
-
-
-};
-
-this.on('sceneLoad', assetsLoader);	
-
-this.on('preload', function (scene){
-	if(vnjs.sceneLoader.mode==='once')
-				vue.$data.screen = 'preload';
-
-});
-
-
-
-
-};
-
-
-
-function audioVnjson (data){
-
-this.on('audio', data=>{
-
-PIXI.sound.stopAll();
-
-if(typeof data==='string'){
-		if(data==="pause"){
-			PIXI.sound.togglePauseAll();
-		}
-		else if(data==='stop'){
-			PIXI.sound.stopAll();
-		}
-		else if(action==='mute'){
-			//PIXI.sound.toggleMuteAll();
-		}
-		else{
-			_assets[name].volume = vnjs.current.conf.volume/1000;
-			_assets[data].play();
-			prevAudio = data;
-		}
-}
-else{
-let { name, volume, action, loop, speed } = data;
-let vol = Number(volume)||vnjs.current.conf.volume;
-_assets[name].volume =  vol/1000;
-
-
-//sound.togglePauseAll()
-_assets[name].speed = speed||1;
-_assets[name].loop = loop||false;
-
-if(action==="pause"){
-	PIXI.sound.togglePauseAll();
-}
-else if(action==='stop'){
-	PIXI.sound.stopAll();
-}
-else if(action==='mute'){
-	PIXI.sound.toggleMuteAll();
-}
-else{
-	_assets[name].play();
-	prevAudio = name;
-}
-
-};
-
-
-})
-}
-
-
-function debugVnjson (){
-
-this.on('*', err=>{
-	console.error(`Плагин { ${err} } не зарегистрирован`);
-});	
-
-this.on('exec', ctx=>{
-	this.emit('history');
-
-	this.emit('stateSave')
-});
-
-this.on('preload', scene=>{
-	if(this.debug)
-		console.log(`<${scene.name}>`);
-});
-
-this.on('load', (progress, url)=>{
-	if(this.debug)
-			console.log(progress, url)
-})
-
-this.on('postload', scene=>{
-	if(this.debug)
-			console.log(`</${scene.name}>`);
-
-});
-
-this.on('debug', function (){
-if(this.debug){
-
-	this.emit('stateLoad')
-
-}
-});
-
-}
 function clearVnjson(){
 
 
@@ -328,6 +179,43 @@ PIXI.filters.TiltShiftFilter
 PIXI.filters.TwistFilter
 PIXI.filters.ZoomBlurFilter 
  */
+function debugVnjson (){
+
+this.on('*', err=>{
+	console.error(`Плагин { ${err} } не зарегистрирован`);
+});	
+
+this.on('exec', ctx=>{
+	this.emit('history');
+
+	this.emit('stateSave')
+});
+
+this.on('preload', scene=>{
+	if(this.conf.debug)
+		console.log(`<${scene.name}>`);
+});
+
+this.on('load', (progress, url)=>{
+	if(this.conf.debug)
+			console.log(progress, url)
+})
+
+this.on('postload', scene=>{
+	if(this.conf.debug)
+			console.log(`</${scene.name}>`);
+
+});
+
+this.on('debug', function (){
+if(this.conf.debug){
+
+	this.emit('stateLoad')
+
+}
+});
+
+}
 function historyVnjson(){
 
 
@@ -365,81 +253,6 @@ store(this.current)
 
 }
 
-
-function jumpVnjson(){
-
-
-
-
-
-this.on('jump', pathname=>{
-
-				let path = pathname.split('.');
-
-				this.current.index = 0;
-				//label
-				if(!/\./i.test(pathname)){
-					this.current.labelName = path[0];
-					this.emit('jump.label', pathname)
-				}
-				//scene.label
-				if(/\./i.test(pathname)){
-						this.current.sceneName = path[0];
-						this.current.labelName = path[1];
-					
-						if(this.sceneLoader.mode==='once'){
-							//this.assetsPath = []
-							var arr = this.sceneLoader.scenes.filter(item=>{ return item.name===path[0];})
-							let next = ()=>{
-										this.emit('sceneLoad', {name: arr[0].name, assets: this.assetsPath});
-										this.on('postload', ()=>{
-											this.emit('jump.scene', pathname)
-										})
-							}
-							this.assetsPath = [];
-							this.sceneLoader.loader(arr[0], next);
-						}
-						else{
-								this.emit('jump.scene', pathname)
-						};
-				};
-			})
-
-
-
-}
-function gameMenuVnjson(){
-
-
-
-function gameMenu(menu){
-	vue.$data.screen = "gamemenu";
-	setTimeout(drawMenu, 0);
-
-function drawMenu(){
-
-vnjs.$.menu_items.innerHTML = "";
-	for(let [menuItem, label] of Object.entries(menu)){
-		
-		if(menuItem==='?'){
-			vnjs.$.menu_quetion.innerHTML = label;
-		}else{
-
-			let strmenu = `<div data-label="${ label }" class="menu-item">${menuItem}</div>`;
-			vnjs.$.menu_items.innerHTML +=strmenu;
-		}
-	};
-
-	}
-
-
-
-}
-
-this.on('menu', gameMenu)
-
-}
-
 function pointVjson(){
 
 
@@ -474,7 +287,7 @@ removeSignal();
 vnjs.$.reply.innerHTML = "";
 vnjs.$.reply.style.color = color;
 
-if(vnjs.current.conf.typespeed==='0'){
+if(vnjs.current.options.typespeed==='0'){
 		vnjs.$.reply.innerHTML = reply;
 }
 else{
@@ -507,7 +320,7 @@ if(charsArr.length===i){
 
 	charsArr[i].style.opacity = 1;
 	i++;
-	var timeoutID = setTimeout(showLetter, vnjs.current.conf.typespeed)
+	var timeoutID = setTimeout(showLetter, vnjs.current.options.typespeed)
 }
 }
 showLetter();
@@ -702,3 +515,229 @@ this.on('right', right);
 this.on('left', left);
 this.on('center', center );
 }
+function assetsLoaderVnjson (){
+
+
+
+
+
+var assetsLoader = scene=>{
+
+
+
+if(scene.assets.length === 0){
+this.emit('preload', scene);	
+	this.emit('load', '[  ]')
+this.emit('postload', scene);
+}
+else{
+const loader = new PIXI.Loader();
+
+loader.onStart.add(() => {
+	this.emit('preload', scene);
+});
+console.log(scene)
+loader.add(scene.assets).load();
+
+loader.onLoad.add((loader, res) => {
+
+			if(res.extension==='mp3'){
+
+				_assets[res.name] = res.sound;
+			}else{
+				_assets[res.name] = new PIXI.Sprite(res.texture);
+			}
+			this.emit('load', `${Math.round(loader.progress)}%`, res.url);
+
+		}); 
+
+loader.onComplete.add(_=> {
+
+	this.emit('postload', scene);
+});
+
+}
+
+
+};
+
+this.on('sceneLoad', assetsLoader);	
+
+this.on('preload', function (scene){
+	if(this.conf.mode==='once')
+				vue.$data.screen = 'preload';
+
+});
+
+
+
+
+};
+function getScenesVnjson (){
+
+function getScenes(scenes){
+
+var i = 0;
+
+
+
+function loader(scene, next){
+
+fetch(scene.url)
+  		.then( r => r.json() )
+  		.then( sceneBody=>{
+  				this.setScene(scene.name, sceneBody);
+   				next();				
+  		});
+};
+
+this.sceneLoader = loader;
+
+if(this.conf.mode!=='once'){
+loader(scenes[i], function next (){
+
+					if(scenes.length-1>=++i){
+
+							loader(scenes[i], next);
+					}else{
+							this.emit('sceneLoad', {name: 'assets', assets: this.assetsPath});
+					}
+
+})
+
+	
+}
+
+}
+
+this.on('getScenes', getScenes)
+
+
+}
+function gameMenuVnjson(){
+
+
+
+function gameMenu(menu){
+	vue.$data.screen = "gamemenu";
+	setTimeout(drawMenu, 0);
+
+function drawMenu(){
+
+vnjs.$.menu_items.innerHTML = "";
+	for(let [menuItem, label] of Object.entries(menu)){
+		
+		if(menuItem==='?'){
+			vnjs.$.menu_quetion.innerHTML = label;
+		}else{
+
+			let strmenu = `<div data-label="${ label }" class="menu-item">${menuItem}</div>`;
+			vnjs.$.menu_items.innerHTML +=strmenu;
+		}
+	};
+
+	}
+
+
+
+}
+
+this.on('menu', gameMenu)
+
+}
+
+
+function jumpVnjson(){
+
+
+this.on('jump', pathname=>{
+
+				let path = pathname.split('.');
+
+				this.current.index = 0;
+				//label
+				if(!/\./i.test(pathname)){
+					this.current.labelName = path[0];
+					this.emit('jump.label', pathname)
+				}
+				//scene.label
+				if(/\./i.test(pathname)){
+						this.current.sceneName = path[0];
+						this.current.labelName = path[1];
+					
+						if(this.conf.mode==='once'){
+
+							var arr = this.conf.scenes.filter(item=>{ return item.name===path[0];})
+							let next = ()=>{
+										this.emit('sceneLoad', {name: arr[0].name, assets: this.assetsPath});
+										this.on('postload', _=>{
+											this.emit('jump.scene', pathname)
+										})
+							}
+							this.assetsPath = [];
+							this.sceneLoader(arr[0], next);
+						}
+						else{
+								this.emit('jump.scene', pathname)
+						};
+				};
+			})
+
+
+
+}
+
+
+
+function audioVnjson (data){
+
+this.on('audio', data=>{
+
+PIXI.sound.stopAll();
+
+if(typeof data==='string'){
+		if(data==="pause"){
+			PIXI.sound.togglePauseAll();
+		}
+		else if(data==='stop'){
+			PIXI.sound.stopAll();
+		}
+		else if(action==='mute'){
+			//PIXI.sound.toggleMuteAll();
+		}
+		else{
+			_assets[name].volume = vnjs.current.options.volume/1000;
+			_assets[data].play();
+
+		}
+}
+else{
+let { name, volume, action, loop, speed } = data;
+let vol = Number(volume)||vnjs.current.options.volume;
+_assets[name].volume =  vol/1000;
+
+
+//sound.togglePauseAll()
+_assets[name].speed = speed||1;
+_assets[name].loop = loop||false;
+
+if(action==="pause"){
+	PIXI.sound.togglePauseAll();
+}
+else if(action==='stop'){
+	PIXI.sound.stopAll();
+}
+else if(action==='mute'){
+	PIXI.sound.toggleMuteAll();
+}
+else{
+	_assets[name].play();
+
+}
+
+};
+
+
+})
+}
+

@@ -25,7 +25,7 @@ app.stage.addChild(_screens.show);
 
 const vnjs = new Vnjson();
 
-vnjs.debug = false;
+vnjs.conf.debug = false;
 
 
 var _assets = {};
@@ -39,6 +39,7 @@ vnjs.use(jumpVnjson);
 vnjs.use(gameMenuVnjson);
 vnjs.use(screenVnjson);
 vnjs.use(assetsLoaderVnjson);
+vnjs.use(getScenesVnjson);
 vnjs.use(printVnjson);
 vnjs.use(audioVnjson);
 vnjs.use(showVnjson);
@@ -55,16 +56,17 @@ fetch('./vn.json')
   		.then( r => r.json() )
   		.then( (config)=>{
 		
-const { scenes, entry, mode } = config;
+
 /**
  * Scenes load order 
  * [once] - Assets&&scenes dinamic load
  * [all] - Load all game resourse
  */
-vnjs.sceneLoader.mode = mode;
-vnjs.sceneLoader.entry = entry;
-if(vnjs.debug){
-	vnjs.sceneLoader.mode = 'all';
+vnjs.conf = config;
+//vnjs.conf.mode = mode;
+//vnjs.conf.entry = entry;
+if(vnjs.conf.debug){
+	vnjs.conf.mode = 'all';
 }
 
 //vnjs.current = store.getAll()
@@ -72,15 +74,15 @@ if(vnjs.debug){
 /**
  * Scene loader
  */
-getScenes(scenes)
 
+vnjs.emit('getScenes', vnjs.conf.scenes)
 });//vn.json
 /*
 vnjs.on('postload', function (){
-	vnjs.emit('debug')
+	vnjs.emit('conf.debug')
 })
 */
-//
+
 /**
  * Если мы прыгали в пределах одной сцены
  * между метками, то вызывается [ jump.label ]
@@ -102,14 +104,14 @@ vnjs.on('jump.label', function (pathname){
 
 vnjs.on('jump.scene', function (){
 
-if(vnjs.sceneLoader.mode==='all'){
+if(vnjs.conf.mode==='all'){
 
 		vue.$data.screen = 'stream';
 		vnjs.nextTick(_=>{
 				vnjs.exec()
 		});
 }
-else if(vnjs.sceneLoader.mode==='once'){
+else if(vnjs.conf.mode==='once'){
 	/*
 	 * Timeout для задержки экрана 
 	 * предзагрузки
@@ -130,8 +132,7 @@ else if(vnjs.sceneLoader.mode==='once'){
 
 
 
-
-
+/*
 function getScenes (__scenes){
 
 
@@ -148,12 +149,12 @@ function getScenes (__scenes){
 
 
 function	get (scenes, loader){
-			vnjs.sceneLoader.loader = loader; 
-			vnjs.sceneLoader.scenes = scenes;
+			vnjs.sceneLoader = loader; 
+			vnjs.conf.scenes = scenes;
 			var i = 0;
 
 
-				if(vnjs.sceneLoader.mode!=='once'){
+				if(vnjs.conf.mode!=='once'){
 						loader(scenes[i], next)
 				}
 			
@@ -177,4 +178,4 @@ fetch(scene.url)
 
 
 
-}
+}*/

@@ -22,7 +22,7 @@ removeSignal();
 vnjs.$.reply.innerHTML = "";
 vnjs.$.reply.style.color = color;
 
-if(vnjs.current.conf.typespeed==='0'){
+if(vnjs.current.options.typespeed==='0'){
 		vnjs.$.reply.innerHTML = reply;
 }
 else{
@@ -55,7 +55,7 @@ if(charsArr.length===i){
 
 	charsArr[i].style.opacity = 1;
 	i++;
-	var timeoutID = setTimeout(showLetter, vnjs.current.conf.typespeed)
+	var timeoutID = setTimeout(showLetter, vnjs.current.options.typespeed)
 }
 }
 showLetter();

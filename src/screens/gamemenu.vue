@@ -24,7 +24,8 @@ export default {
   	 clickHandler(e){
       var { label } = e.target.dataset;
       this.$nextTick(function () {  
-        vnjs.exec({jump: label});
+        vnjs.emit('jump', label)
+
       })
   	 }
   }

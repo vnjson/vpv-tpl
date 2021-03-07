@@ -18,14 +18,14 @@ if(typeof data==='string'){
 			//PIXI.sound.toggleMuteAll();
 		}
 		else{
-			_assets[name].volume = vnjs.current.conf.volume/1000;
+			_assets[name].volume = vnjs.current.options.volume/1000;
 			_assets[data].play();
-			prevAudio = data;
+
 		}
 }
 else{
 let { name, volume, action, loop, speed } = data;
-let vol = Number(volume)||vnjs.current.conf.volume;
+let vol = Number(volume)||vnjs.current.options.volume;
 _assets[name].volume =  vol/1000;
 
 
@@ -44,7 +44,7 @@ else if(action==='mute'){
 }
 else{
 	_assets[name].play();
-	prevAudio = name;
+
 }
 
 };

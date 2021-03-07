@@ -60,12 +60,12 @@ export default {
     }
   },
   created (){
-    new AudioContext().resume();
+
   },
   mounted (){
 
     if(!this.$root.$data.store.isStream){
-
+    new AudioContext().resume();
       resetGame();
     }
   },
@@ -76,12 +76,12 @@ export default {
       if(id==='newgame'){
 
         resetGame()
-        if(vnjs.sceneLoader.mode==='all'){
+        if(vnjs.conf.mode==='all'){
             vue.$data.screen = 'main-menu';
         }
 
         this.$nextTick(function () { 
-          vnjs.emit('jump', vnjs.sceneLoader.entry) 
+          vnjs.emit('jump', vnjs.conf.entry) 
 
         })
         
